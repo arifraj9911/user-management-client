@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { FaPencilAlt } from "react-icons/fa";
-import { RiArrowLeftDoubleFill, RiDeleteBin6Fill } from "react-icons/ri";
-import { Link, useLoaderData } from "react-router-dom";
+import { FaPencilAlt, FaUserPlus } from "react-icons/fa";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AllUser = () => {
   const loadedUsers = useLoaderData();
   const [users, setUsers] = useState(loadedUsers);
+  const navigate = useNavigate();
+
   const handleDeleteUser = (id) => {
     console.log("deleted id ", id);
     Swal.fire({
@@ -40,8 +42,8 @@ const AllUser = () => {
   };
   return (
     <div className="w-3/4 mx-auto p-10 my-20 border-4 border-[#6AA84F]">
-      <Link className="flex gap-1 items-center" to="/">
-        <RiArrowLeftDoubleFill />
+      <Link className="flex gap-2 items-center" to="/">
+        <FaUserPlus />
         <p>New Users</p>
       </Link>
 
@@ -67,7 +69,10 @@ const AllUser = () => {
                 <td>{user?.gender}</td>
                 <td>{user?.status}</td>
                 <td className="flex gap-2 items-center justify-center">
-                  <FaPencilAlt className="shadow-lg border text-4xl p-2 rounded-lg text-[#5708DC]" />
+                  <FaPencilAlt
+                    onClick={() => navigate(`/update/${user._id}`)}
+                    className="shadow-lg border text-4xl p-2 rounded-lg text-[#5708DC]"
+                  />
                   <RiDeleteBin6Fill
                     onClick={() => handleDeleteUser(user._id)}
                     className="shadow-lg border text-4xl p-2 rounded-lg text-[#5708DC]"
