@@ -28,12 +28,13 @@ const NewUser = () => {
             text: "add new user with different email",
             icon: "success",
           });
+          form.reset();
         }
       });
   };
   return (
     <div className="w-3/4 mx-auto p-10 my-20 border-4 border-[#6AA84F]">
-      <Link className="flex gap-1 items-center" to="/">
+      <Link className="flex gap-1 items-center" to="/users">
         <RiArrowLeftDoubleFill />
         <p>All Users</p>
       </Link>
