@@ -21,12 +21,12 @@ const router = createBrowserRouter([
       {
         path: "/users",
         element: <AllUser></AllUser>,
-        loader: () => fetch("http://localhost:5000/users"),
+        loader: () => fetch("https://user-management-server-iota.vercel.app/users"),
       },
       {
         path:"/update/:id",
         element:<UpdateUser></UpdateUser>,
-        loader:({params})=>fetch(`http://localhost:5000/users/${params.id}`)
+        loader:({params})=>fetch(`https://user-management-server-iota.vercel.app/users/${params.id}`)
       }
     ],
   },

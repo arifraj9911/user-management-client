@@ -13,7 +13,7 @@ const UpdateUser = () => {
     const status = form.status.value;
     const updateUser = { name, email, gender, status };
     console.log(updateUser);
-    fetch("http://localhost:5000/users", {
+    fetch("https://user-management-server-iota.vercel.app/users", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
